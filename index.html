@@ -1,39 +1,697 @@
-x<!DOCTYPE HTML>
-<!-- THE DOCTYPE tells the browser what type of webpage to render, the doctype used in this website is HTML5 which is the most recent HTML. -->
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Hacksi</title>
-	<!-- THE TITLE element is the name of the page, it is also visible in the browser tab. Its always good practice to give each page an appropriate title. -->
-	<meta name="description" content="A sample website, nothin fancy">
-      <meta http-equiv="author" content="Francisco Campos Arias">
-      <meta name="keywords" content="html, css, web, design, sample, practice">
-      <!-- These are META TAGS, they're used to describe the website, this information is read mainly by search engines like GOOGLE, YAHOO, ETC... -->	
-	<link rel="stylesheet" href="style.css">
-	<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tallcyberguy | Incident Responder & Threat Hunter</title>
+  <meta name="description" content="Cybersecurity professional specialising in Incident Response and Threat Hunting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #00ff88;
+      --cyan:   #00e5ff;
+      --purple: #8b5cf6;
+      --bg:     #080c10;
+      --surface:#0d1117;
+      --border: rgba(0,255,136,.15);
+      --text:   #c9d1d9;
+      --dim:    #6e7681;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS BACKGROUND ── */
+    #matrix-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: .035;
+      pointer-events: none;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+      opacity: .03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(8,12,16,.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--green);
+      font-size: 1.1rem;
+      letter-spacing: .05em;
+    }
+    .nav-logo span { color: var(--cyan); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--green); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(0,255,136,.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .78rem;
+      color: var(--green);
+      margin-bottom: 2rem;
+      animation: fadeDown .6s ease both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      animation: fadeDown .7s .1s ease both;
+    }
+    .hero-name .accent { color: var(--green); }
+    .hero-name .accent2 { color: var(--cyan); }
+
+    .hero-terminal {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(.95rem, 2.5vw, 1.2rem);
+      color: var(--dim);
+      margin-top: 1.2rem;
+      height: 1.8em;
+      animation: fadeDown .8s .2s ease both;
+    }
+    .hero-terminal .cursor {
+      display: inline-block;
+      width: 10px;
+      background: var(--green);
+      animation: blink .8s steps(1) infinite;
+      vertical-align: text-bottom;
+      height: 1.1em;
+      margin-left: 2px;
+    }
+
+    .hero-desc {
+      max-width: 520px;
+      color: var(--dim);
+      line-height: 1.7;
+      margin: 1.8rem auto 0;
+      font-size: .95rem;
+      animation: fadeDown .9s .3s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      animation: fadeDown 1s .4s ease both;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.6rem;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--green);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,255,136,.3);
+    }
+    .btn-primary:hover { box-shadow: 0 0 32px rgba(0,255,136,.5); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--dim);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: fadeDown 1.2s .8s ease both;
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid var(--dim);
+      border-bottom: 2px solid var(--dim);
+      transform: rotate(45deg);
+      animation: bounce 1.5s infinite;
+    }
+
+    /* ── GRID DIVIDER ── */
+    .grid-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
+
+    /* ── ABOUT / STATS ── */
+    #about {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .75rem;
+      color: var(--green);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    @media(max-width:700px){ .about-grid { grid-template-columns: 1fr; gap:2rem; } }
+
+    .about-text p {
+      color: var(--dim);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: .95rem;
+    }
+    .about-text strong { color: var(--text); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .stat-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .stat-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.8rem;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-label {
+      color: var(--dim);
+      font-size: .78rem;
+      margin-top: .3rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .skills-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .skill-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .skill-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,229,255,.07);
+    }
+    .skill-icon {
+      font-size: 1.6rem;
+      margin-bottom: .8rem;
+    }
+    .skill-name {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: .4rem;
+    }
+    .skill-desc {
+      font-size: .8rem;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    /* ── LINKS / CONNECT ── */
+    #connect {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.6rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: .9rem;
+      font-weight: 500;
+      min-width: 200px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,255,136,.08);
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .link-card svg { flex-shrink: 0; }
+
+    /* ── TERMINAL BLOCK ── */
+    .terminal-block {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      text-align: left;
+      max-width: 560px;
+      margin: 3rem auto 0;
+    }
+    .t-bar {
+      display: flex;
+      gap: .4rem;
+      margin-bottom: .8rem;
+    }
+    .t-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .t-dot.red   { background: #ff5f57; }
+    .t-dot.yellow{ background: #febc2e; }
+    .t-dot.green { background: #28c840; }
+    .t-line { color: var(--dim); }
+    .t-cmd  { color: var(--green); }
+    .t-out  { color: var(--cyan); }
+    .t-comment { color: #444d56; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--dim);
+      font-size: .78rem;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    footer span { color: var(--green); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,255,136,.5); }
+      50%      { box-shadow: 0 0 0 5px rgba(0,255,136,0); }
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; }
+      50%      { opacity:0; }
+    }
+    @keyframes bounce {
+      0%,100% { transform: rotate(45deg) translateY(0); }
+      50%      { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ── GLOW ORBS ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb1 {
+      width: 500px; height: 500px;
+      background: rgba(0,255,136,.04);
+      top: -200px; left: -200px;
+    }
+    .orb2 {
+      width: 400px; height: 400px;
+      background: rgba(0,229,255,.04);
+      bottom: -150px; right: -150px;
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-<!-- THIS ACTUAL CONTENT BEGINS HERE...this is called a comment. which can only be seen when viewing the source code. This text CANNOT be seen by the browser. Its helpful when you need to place notes, comments or reminders in your code -->
-	<header>
-		<div class="header">
-			<h1>Welcome to my page folks!</h1>
-		</div>
-	</header>
-	<!-- END HEADER | the header element in new to HTML5 -->
-		<div class="main">
-			<h2>I am a Cyber Security Expert. Working in private sector for over 4 years as Incident Responder/Threat Hunter.</h2>
-		</div>
-		<div class="feature">
-			<h3>My Contents</h3>
-			<p>https://medium.com/@huseyin.eksi</p>
-			<script src="https://tryhackme.com/badge/212556"></script>
-		</div>
-		
-	<footer>
-		&copy;2023 CyberFolk, All Rigts Reserved.
-	</footer>
-	<!-- END FOOTER | the footer element is also new to HTML5 -->
-	</div>
+
+<canvas id="matrix-canvas"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&gt; tall<span>cyber</span>guy</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">🟢 Available for opportunities</div>
+
+  <h1 class="hero-name">
+    Hüseyin Ekşi<br/>
+    <span class="accent">Cyber</span><span class="accent2">Security</span> Professional
+  </h1>
+
+  <div class="hero-terminal">
+    <span id="typewriter"></span><span class="cursor"></span>
+  </div>
+
+  <p class="hero-desc">
+    Incident Responder &amp; Threat Hunter with 4+ years in the private sector.
+    I track adversaries, triage incidents, and write about what I find.
+  </p>
+
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+      📝 Read my Articles
+    </a>
+    <a class="btn btn-outline" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+      ⚙ View GitHub
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    scroll
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">// whoami</p>
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a <strong>cybersecurity professional</strong> focused on the defender side of the house —
+        detecting breaches, hunting hidden threats, and responding to incidents before they become disasters.
+      </p>
+      <p>
+        With 4+ years of hands-on experience in the private sector, I work across endpoint telemetry,
+        network forensics, cloud environments, and SIEM platforms to stay one step ahead of attackers.
+      </p>
+      <p>
+        Outside of work I share knowledge through <strong>Medium articles</strong>,
+        sharpen skills on <strong>TryHackMe</strong>, and contribute to the security community on GitHub.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">IR</div>
+        <div class="stat-label">Incident Response</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">TH</div>
+        <div class="stat-label">Threat Hunting</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">∞</div>
+        <div class="stat-label">Logs Analysed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <p class="section-label">// skill_set --list</p>
+    <h2 class="section-title">What I Work With</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-name">Threat Hunting</div>
+        <div class="skill-desc">Proactive hunt operations using hypotheses, IOCs, and behavioural analytics across endpoint &amp; network telemetry.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚨</div>
+        <div class="skill-name">Incident Response</div>
+        <div class="skill-desc">End-to-end IR: triage, containment, eradication, recovery, and root-cause analysis with detailed reporting.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🪟</div>
+        <div class="skill-name">Windows Forensics</div>
+        <div class="skill-desc">Event logs, registry, prefetch, memory analysis, and Windows artifact investigation using industry tools.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">SIEM & KQL</div>
+        <div class="skill-desc">Detection engineering and investigation queries in Microsoft Sentinel, SentinelOne Deep Visibility, and Splunk.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛡️</div>
+        <div class="skill-name">MITRE ATT&CK</div>
+        <div class="skill-desc">Mapping adversary behaviours to ATT&CK framework to improve detection coverage and purple-team exercises.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐚</div>
+        <div class="skill-name">PowerShell & Python</div>
+        <div class="skill-desc">Scripting for automation, log parsing, threat detection tooling, and rapid incident response workflows.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- CONNECT -->
+<section id="connect">
+  <p class="section-label">// connect --me</p>
+  <h2 class="section-title">Find Me Online</h2>
+
+  <div class="links-grid">
+    <!-- GitHub -->
+    <a class="link-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <!-- Medium -->
+    <a class="link-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      Medium Articles
+    </a>
+    <!-- TryHackMe -->
+    <a class="link-card" href="https://tryhackme.com/p/tallcyberguy" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.292 4.404 5.318A4.938 4.938 0 000 10.2a4.919 4.919 0 004.93 4.93h5.775zm2.59 0v15.13h5.775A4.919 4.919 0 0024 10.2a4.938 4.938 0 00-4.404-4.882C19.098 2.292 16.46 0 13.295 0zM10.24 17.014H4.93A4.919 4.919 0 000 21.944v.057h10.24zm3.52 0v4.987H24v-.057a4.919 4.919 0 00-4.93-4.93z"/></svg>
+      TryHackMe
+    </a>
+  </div>
+
+  <!-- terminal easter egg -->
+  <div class="terminal-block">
+    <div class="t-bar">
+      <div class="t-dot red"></div>
+      <div class="t-dot yellow"></div>
+      <div class="t-dot green"></div>
+    </div>
+    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">whoami</span></div>
+    <div class="t-line">tallcyberguy</div>
+    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">cat mission.txt</span></div>
+    <div class="t-line t-comment"># Hunt threats. Respond fast. Share knowledge.</div>
+    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">echo $STATUS</span></div>
+    <div class="t-line" style="color:var(--green);">[ ONLINE &amp;&amp; HUNTING ]</div>
+    <div class="t-line"><span class="t-cmd">$ </span><span class="cursor" style="display:inline-block;width:8px;height:.9em;background:var(--green);vertical-align:middle;animation:blink .8s steps(1) infinite;"></span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>tallcyberguy</span> · Built with ☕ &amp; terminal aesthetics · 2025
+</footer>
+
+<script>
+  /* ── MATRIX RAIN ── */
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+  let cols, drops;
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+
+  function initMatrix() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    cols  = Math.floor(canvas.width / 16);
+    drops = Array(cols).fill(1);
+  }
+
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(8,12,16,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff88';
+    ctx.font = '14px Share Tech Mono, monospace';
+    drops.forEach((y, i) => {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * 16, y * 16);
+      if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+
+  initMatrix();
+  setInterval(drawMatrix, 50);
+  window.addEventListener('resize', initMatrix);
+
+  /* ── TYPEWRITER ── */
+  const phrases = [
+    'Incident Responder',
+    'Threat Hunter',
+    'Detection Engineer',
+    'Log Whisperer',
+    'Adversary Tracker',
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typewriter');
+
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 45 : 90);
+  }
+  type();
+</script>
 </body>
 </html>
