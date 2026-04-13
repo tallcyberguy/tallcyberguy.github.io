@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tallcyberguy | Incident Responder & Threat Hunter</title>
-  <meta name="description" content="Cybersecurity professional specialising in Incident Response and Threat Hunting." />
+  <title>Huseyin Eksi | Senior IT Security Analyst</title>
+  <meta name="description" content="Senior IT Security Analyst at NTT DATA Business Solutions — Incident Response, Threat Hunting, SOC Engineering & Cloud Security." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -31,7 +31,6 @@
       overflow-x: hidden;
     }
 
-    /* ── CANVAS BACKGROUND ── */
     #matrix-canvas {
       position: fixed;
       inset: 0;
@@ -40,7 +39,6 @@
       pointer-events: none;
     }
 
-    /* ── NOISE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +49,7 @@
       z-index: 0;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -60,39 +58,32 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2.5rem;
-      background: rgba(8,12,16,.8);
-      backdrop-filter: blur(12px);
+      background: rgba(8,12,16,.85);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
       font-family: 'Share Tech Mono', monospace;
       color: var(--green);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       letter-spacing: .05em;
     }
     .nav-logo span { color: var(--cyan); }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
+    nav ul { list-style:none; display:flex; gap:2rem; }
     nav ul a {
       color: var(--dim);
       text-decoration: none;
-      font-size: .85rem;
-      letter-spacing: .05em;
+      font-size: .82rem;
+      letter-spacing: .06em;
       text-transform: uppercase;
       transition: color .2s;
     }
     nav ul a:hover { color: var(--green); }
 
-    /* ── SECTIONS ── */
-    section {
-      position: relative;
-      z-index: 1;
-    }
+    /* SECTIONS */
+    section { position: relative; z-index: 1; }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -100,7 +91,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 6rem 1.5rem 4rem;
+      padding: 7rem 1.5rem 5rem;
     }
 
     .hero-badge {
@@ -110,9 +101,9 @@
       background: rgba(0,255,136,.06);
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: .35rem 1rem;
+      padding: .35rem 1.1rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .78rem;
+      font-size: .76rem;
       color: var(--green);
       margin-bottom: 2rem;
       animation: fadeDown .6s ease both;
@@ -125,25 +116,43 @@
       animation: pulse 2s infinite;
     }
 
+    .hero-location {
+      font-size: .8rem;
+      color: var(--dim);
+      font-family: 'Share Tech Mono', monospace;
+      margin-bottom: .6rem;
+      animation: fadeDown .65s .05s ease both;
+    }
+    .hero-location span { color: var(--cyan); }
+
     .hero-name {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -.02em;
       animation: fadeDown .7s .1s ease both;
     }
-    .hero-name .accent { color: var(--green); }
+    .hero-name .accent  { color: var(--green); }
     .hero-name .accent2 { color: var(--cyan); }
+
+    .hero-company {
+      margin-top: .9rem;
+      font-size: .9rem;
+      color: var(--dim);
+      font-family: 'Share Tech Mono', monospace;
+      animation: fadeDown .75s .15s ease both;
+    }
+    .hero-company span { color: var(--text); font-weight: 600; }
 
     .hero-terminal {
       font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(.95rem, 2.5vw, 1.2rem);
-      color: var(--dim);
-      margin-top: 1.2rem;
+      font-size: clamp(.9rem, 2.3vw, 1.15rem);
+      color: var(--green);
+      margin-top: 1.4rem;
       height: 1.8em;
       animation: fadeDown .8s .2s ease both;
     }
-    .hero-terminal .cursor {
+    .cursor {
       display: inline-block;
       width: 10px;
       background: var(--green);
@@ -154,11 +163,11 @@
     }
 
     .hero-desc {
-      max-width: 520px;
+      max-width: 540px;
       color: var(--dim);
-      line-height: 1.7;
-      margin: 1.8rem auto 0;
-      font-size: .95rem;
+      line-height: 1.75;
+      margin: 1.6rem auto 0;
+      font-size: .93rem;
       animation: fadeDown .9s .3s ease both;
     }
 
@@ -170,17 +179,17 @@
       margin-top: 2.5rem;
       animation: fadeDown 1s .4s ease both;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
       padding: .7rem 1.6rem;
       border-radius: 8px;
-      font-size: .9rem;
+      font-size: .88rem;
       font-weight: 600;
       text-decoration: none;
       transition: transform .15s, box-shadow .15s;
-      cursor: pointer;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
@@ -198,55 +207,46 @@
 
     .scroll-hint {
       position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
+      bottom: 2.5rem; left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .4rem;
-      color: var(--dim);
-      font-size: .75rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: var(--dim); font-size: .72rem;
+      letter-spacing: .1em; text-transform: uppercase;
       animation: fadeDown 1.2s .8s ease both;
     }
     .scroll-arrow {
-      width: 20px; height: 20px;
+      width: 18px; height: 18px;
       border-right: 2px solid var(--dim);
       border-bottom: 2px solid var(--dim);
       transform: rotate(45deg);
       animation: bounce 1.5s infinite;
     }
 
-    /* ── GRID DIVIDER ── */
     .grid-line {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
       margin: 0 2rem;
     }
 
-    /* ── ABOUT / STATS ── */
+    /* ABOUT */
     #about {
       padding: 6rem 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
     }
-
     .section-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: .75rem;
+      font-size: .74rem;
       color: var(--green);
       letter-spacing: .2em;
       text-transform: uppercase;
-      margin-bottom: .6rem;
+      margin-bottom: .5rem;
     }
     .section-title {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
       font-weight: 700;
       margin-bottom: 1rem;
     }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -254,13 +254,11 @@
       margin-top: 3rem;
       align-items: start;
     }
-    @media(max-width:700px){ .about-grid { grid-template-columns: 1fr; gap:2rem; } }
+    @media(max-width:700px){ .about-grid { grid-template-columns:1fr; gap:2rem; } }
 
     .about-text p {
-      color: var(--dim);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-      font-size: .95rem;
+      color: var(--dim); line-height: 1.8;
+      margin-bottom: 1rem; font-size: .93rem;
     }
     .about-text strong { color: var(--text); }
 
@@ -279,33 +277,111 @@
     .stat-card:hover { border-color: var(--green); transform: translateY(-3px); }
     .stat-value {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 1.8rem;
-      color: var(--green);
-      line-height: 1;
+      font-size: 1.7rem;
+      color: var(--green); line-height: 1;
     }
     .stat-label {
-      color: var(--dim);
-      font-size: .78rem;
+      color: var(--dim); font-size: .75rem;
       margin-top: .3rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+      text-transform: uppercase; letter-spacing: .08em;
     }
 
-    /* ── SKILLS ── */
+    /* EXPERIENCE */
+    #experience {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-inner { max-width: 1100px; margin: 0 auto; }
+    .timeline {
+      position: relative;
+      margin-top: 3rem;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green), transparent);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem; top: .35rem;
+      width: 10px; height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0,255,136,.6);
+    }
+    .tl-date {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .74rem;
+      color: var(--green);
+      letter-spacing: .1em;
+      margin-bottom: .3rem;
+    }
+    .tl-role {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tl-company {
+      font-size: .85rem;
+      color: var(--cyan);
+      margin-bottom: .5rem;
+    }
+    .tl-desc {
+      font-size: .85rem;
+      color: var(--dim);
+      line-height: 1.65;
+    }
+
+    /* CERTIFICATIONS */
+    #certs {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.4rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .cert-card:hover {
+      border-color: var(--purple);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(139,92,246,.08);
+    }
+    .cert-icon { font-size: 1.5rem; margin-bottom: .6rem; }
+    .cert-name { font-weight: 600; font-size: .9rem; color: var(--text); margin-bottom: .2rem; }
+    .cert-issuer { font-size: .78rem; color: var(--purple); font-family: 'Share Tech Mono', monospace; }
+
+    /* SKILLS */
     #skills {
       padding: 6rem 1.5rem;
       background: var(--surface);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .skills-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    .skills-inner { max-width: 1100px; margin: 0 auto; }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       gap: 1rem;
       margin-top: 3rem;
     }
@@ -321,105 +397,122 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(0,229,255,.07);
     }
-    .skill-icon {
-      font-size: 1.6rem;
-      margin-bottom: .8rem;
-    }
-    .skill-name {
-      font-weight: 600;
-      font-size: .95rem;
-      margin-bottom: .4rem;
-    }
-    .skill-desc {
-      font-size: .8rem;
-      color: var(--dim);
-      line-height: 1.5;
-    }
+    .skill-icon { font-size: 1.5rem; margin-bottom: .7rem; }
+    .skill-name { font-weight: 600; font-size: .92rem; margin-bottom: .35rem; }
+    .skill-desc { font-size: .8rem; color: var(--dim); line-height: 1.55; }
 
-    /* ── LINKS / CONNECT ── */
-    #connect {
+    /* PROJECTS */
+    #projects {
       padding: 6rem 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
-      text-align: center;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,255,136,.08);
+    }
+    .project-header { display: flex; align-items: center; gap: .7rem; }
+    .project-icon { font-size: 1.4rem; }
+    .project-name { font-weight: 700; font-size: .98rem; color: var(--text); }
+    .project-desc { font-size: .82rem; color: var(--dim); line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
+    .tag {
+      background: rgba(0,255,136,.07);
+      border: 1px solid rgba(0,255,136,.2);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .7rem;
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--green);
     }
 
+    /* CONNECT */
+    #connect {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .connect-inner { max-width: 800px; margin: 0 auto; }
     .links-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
       margin-top: 3rem;
     }
     .link-card {
-      display: flex;
-      align-items: center;
-      gap: .85rem;
-      background: var(--surface);
+      display: flex; align-items: center; gap: .85rem;
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1rem 1.6rem;
-      text-decoration: none;
-      color: var(--text);
-      font-size: .9rem;
-      font-weight: 500;
-      min-width: 200px;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
+      text-decoration: none; color: var(--text);
+      font-size: .88rem; font-weight: 500;
+      min-width: 190px;
+      transition: border-color .2s, transform .2s, box-shadow .2s, color .2s;
     }
     .link-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(0,255,136,.08);
-      border-color: var(--green);
-      color: var(--green);
+      border-color: var(--green); color: var(--green);
     }
     .link-card svg { flex-shrink: 0; }
 
-    /* ── TERMINAL BLOCK ── */
     .terminal-block {
-      background: #0d1117;
+      background: #0a0e14;
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.2rem 1.6rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: .82rem;
-      line-height: 1.7;
+      font-size: .81rem;
+      line-height: 1.75;
       text-align: left;
       max-width: 560px;
       margin: 3rem auto 0;
     }
-    .t-bar {
-      display: flex;
-      gap: .4rem;
-      margin-bottom: .8rem;
-    }
-    .t-dot {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-    }
-    .t-dot.red   { background: #ff5f57; }
-    .t-dot.yellow{ background: #febc2e; }
-    .t-dot.green { background: #28c840; }
-    .t-line { color: var(--dim); }
-    .t-cmd  { color: var(--green); }
-    .t-out  { color: var(--cyan); }
-    .t-comment { color: #444d56; }
+    .t-bar { display:flex; gap:.4rem; margin-bottom:.8rem; }
+    .t-dot { width:12px; height:12px; border-radius:50%; }
+    .t-dot.red    { background:#ff5f57; }
+    .t-dot.yellow { background:#febc2e; }
+    .t-dot.green  { background:#28c840; }
+    .t-cmd     { color: var(--green); }
+    .t-out     { color: var(--cyan); }
+    .t-val     { color: var(--text); }
+    .t-comment { color: #3a4149; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       text-align: center;
       padding: 2rem;
       border-top: 1px solid var(--border);
       color: var(--dim);
-      font-size: .78rem;
+      font-size: .76rem;
       font-family: 'Share Tech Mono', monospace;
     }
     footer span { color: var(--green); }
 
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     @keyframes fadeDown {
-      from { opacity:0; transform:translateY(-12px); }
+      from { opacity:0; transform:translateY(-14px); }
       to   { opacity:1; transform:translateY(0); }
     }
     @keyframes pulse {
@@ -427,31 +520,23 @@
       50%      { box-shadow: 0 0 0 5px rgba(0,255,136,0); }
     }
     @keyframes blink {
-      0%,100% { opacity:1; }
-      50%      { opacity:0; }
+      0%,100% { opacity:1; } 50% { opacity:0; }
     }
     @keyframes bounce {
       0%,100% { transform: rotate(45deg) translateY(0); }
       50%      { transform: rotate(45deg) translateY(5px); }
     }
 
-    /* ── GLOW ORBS ── */
     .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
+      position: fixed; border-radius: 50%;
+      filter: blur(90px); pointer-events: none; z-index: 0;
     }
-    .orb1 {
-      width: 500px; height: 500px;
-      background: rgba(0,255,136,.04);
-      top: -200px; left: -200px;
-    }
-    .orb2 {
-      width: 400px; height: 400px;
-      background: rgba(0,229,255,.04);
-      bottom: -150px; right: -150px;
+    .orb1 { width:500px; height:500px; background:rgba(0,255,136,.04); top:-200px; left:-200px; }
+    .orb2 { width:400px; height:400px; background:rgba(0,229,255,.04); bottom:-150px; right:-150px; }
+
+    @media(max-width:600px){
+      nav ul { gap:1rem; }
+      .hero-cta { flex-direction:column; align-items:center; }
     }
   </style>
 </head>
@@ -463,9 +548,11 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">&gt; tall<span>cyber</span>guy</div>
+  <div class="nav-logo">&gt; hüseyin<span>.eksi</span></div>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certs</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#connect">Connect</a></li>
   </ul>
@@ -473,28 +560,38 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-badge">🟢 Available for opportunities</div>
+  <div class="hero-badge">🟢 Open to new opportunities</div>
+
+  <p class="hero-location">📍 <span>Istanbul, Türkiye</span></p>
 
   <h1 class="hero-name">
-    Hüseyin Ekşi<br/>
-    <span class="accent">Cyber</span><span class="accent2">Security</span> Professional
+    Hüseyin <span class="accent">Ekşi</span>
   </h1>
 
+  <p class="hero-company">
+    Senior IT Security Analyst &nbsp;@&nbsp; <span>NTT DATA Business Solutions</span>
+  </p>
+
   <div class="hero-terminal">
-    <span id="typewriter"></span><span class="cursor"></span>
+    &gt; <span id="typewriter"></span><span class="cursor"></span>
   </div>
 
   <p class="hero-desc">
-    Incident Responder &amp; Threat Hunter with 4+ years in the private sector.
-    I track adversaries, triage incidents, and write about what I find.
+    Cybersecurity professional specialising in <strong style="color:var(--text)">Incident Response</strong>,
+    <strong style="color:var(--text)">Threat Hunting</strong>, and
+    <strong style="color:var(--text)">SOC Engineering</strong>.
+    I build detection systems, hunt adversaries, and share knowledge through articles and open-source projects.
   </p>
 
   <div class="hero-cta">
     <a class="btn btn-primary" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
       📝 Read my Articles
     </a>
+    <a class="btn btn-outline" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
+      💼 LinkedIn Profile
+    </a>
     <a class="btn btn-outline" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
-      ⚙ View GitHub
+      ⚙ GitHub
     </a>
   </div>
 
@@ -514,16 +611,19 @@
   <div class="about-grid">
     <div class="about-text">
       <p>
-        I'm a <strong>cybersecurity professional</strong> focused on the defender side of the house —
-        detecting breaches, hunting hidden threats, and responding to incidents before they become disasters.
+        I'm a <strong>Senior IT Security Analyst</strong> at NTT DATA Business Solutions with 4+ years of
+        hands-on experience defending enterprise environments. My day-to-day spans endpoint detection,
+        network forensics, log analysis, and proactive threat hunting.
       </p>
       <p>
-        With 4+ years of hands-on experience in the private sector, I work across endpoint telemetry,
-        network forensics, cloud environments, and SIEM platforms to stay one step ahead of attackers.
+        I've built a fully self-hosted open-source SOC lab using
+        <strong>Wazuh, TheHive, Velociraptor, OPNsense, and T-Pot</strong> on Hetzner — because the
+        best way to understand attacks is to face them yourself.
       </p>
       <p>
-        Outside of work I share knowledge through <strong>Medium articles</strong>,
-        sharpen skills on <strong>TryHackMe</strong>, and contribute to the security community on GitHub.
+        I'm a graduate of <strong>Marmara University</strong> and am actively pursuing cloud security
+        expertise, holding both AWS Cloud Practitioner and AWS Security Specialty certifications.
+        Outside work I share knowledge through <strong>Medium</strong>, TryHackMe, and YouTube.
       </p>
     </div>
 
@@ -533,17 +633,81 @@
         <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">IR</div>
-        <div class="stat-label">Incident Response</div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Certifications</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">TH</div>
-        <div class="stat-label">Threat Hunting</div>
+        <div class="stat-value">1.8K</div>
+        <div class="stat-label">LinkedIn Followers</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">∞</div>
-        <div class="stat-label">Logs Analysed</div>
+        <div class="stat-value">SOC</div>
+        <div class="stat-label">Home Lab Builder</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <p class="section-label">// cat experience.log</p>
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2024 — PRESENT</div>
+        <div class="tl-role">Senior IT Security Analyst</div>
+        <div class="tl-company">NTT DATA Business Solutions · Istanbul, Türkiye</div>
+        <div class="tl-desc">
+          Leading security monitoring, incident response operations, and threat hunting activities
+          across enterprise environments. Developing detection rules, triaging alerts, and driving
+          the full IR lifecycle from identification through to post-incident reporting.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2020 — 2024</div>
+        <div class="tl-role">IT Security Analyst / Incident Responder</div>
+        <div class="tl-company">Private Sector · Istanbul, Türkiye</div>
+        <div class="tl-desc">
+          4+ years working as an Incident Responder and Threat Hunter in the private sector.
+          Hands-on with SIEM platforms (Wazuh, Splunk), endpoint telemetry, phishing analysis,
+          network forensics, and building custom detection logic using YARA and KQL.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <p class="section-label">// ls ./certifications/</p>
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div class="cert-name">AWS Certified Security – Specialty</div>
+      <div class="cert-issuer">Amazon Web Services</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌩️</div>
+      <div class="cert-name">AWS Certified Cloud Practitioner</div>
+      <div class="cert-issuer">Amazon Web Services</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔎</div>
+      <div class="cert-name">Practical SOC Analyst Associate (PSAA)</div>
+      <div class="cert-issuer">TCM Security</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div class="cert-name">Marmara University</div>
+      <div class="cert-issuer">Bachelor's Degree</div>
     </div>
   </div>
 </section>
@@ -560,22 +724,27 @@
       <div class="skill-card">
         <div class="skill-icon">🔍</div>
         <div class="skill-name">Threat Hunting</div>
-        <div class="skill-desc">Proactive hunt operations using hypotheses, IOCs, and behavioural analytics across endpoint &amp; network telemetry.</div>
+        <div class="skill-desc">Proactive hunt operations using hypotheses, IOCs, and behavioural analytics across endpoint & network telemetry.</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🚨</div>
         <div class="skill-name">Incident Response</div>
-        <div class="skill-desc">End-to-end IR: triage, containment, eradication, recovery, and root-cause analysis with detailed reporting.</div>
+        <div class="skill-desc">End-to-end IR: triage, containment, eradication, recovery, and root-cause analysis with detailed reporting (57-page IR reports!).</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🪟</div>
         <div class="skill-name">Windows Forensics</div>
-        <div class="skill-desc">Event logs, registry, prefetch, memory analysis, and Windows artifact investigation using industry tools.</div>
+        <div class="skill-desc">Event logs, registry, prefetch, memory, and artifact analysis. Velociraptor for remote acquisition.</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">📊</div>
         <div class="skill-name">SIEM & KQL</div>
-        <div class="skill-desc">Detection engineering and investigation queries in Microsoft Sentinel, SentinelOne Deep Visibility, and Splunk.</div>
+        <div class="skill-desc">Detection engineering and investigation queries in Wazuh, Microsoft Sentinel, SentinelOne Deep Visibility, and Splunk.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud Security (AWS)</div>
+        <div class="skill-desc">AWS Security Specialty certified. Assessing cloud misconfigs, IAM risks, and securing AWS environments.</div>
       </div>
       <div class="skill-card">
         <div class="skill-icon">🛡️</div>
@@ -587,7 +756,73 @@
         <div class="skill-name">PowerShell & Python</div>
         <div class="skill-desc">Scripting for automation, log parsing, threat detection tooling, and rapid incident response workflows.</div>
       </div>
+      <div class="skill-card">
+        <div class="skill-icon">🕸️</div>
+        <div class="skill-name">Network Forensics</div>
+        <div class="skill-desc">Traffic analysis with Snort, Tcpdump, T-Pot honeypot, and OPNsense for real-world threat telemetry.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🦠</div>
+        <div class="skill-name">Malware Analysis</div>
+        <div class="skill-desc">Static and dynamic analysis of malware samples. YARA rule creation for detection. Phishing artefact dissection.</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// git log --oneline --projects</p>
+  <h2 class="section-title">Notable Projects</h2>
+
+  <div class="projects-grid">
+    <a class="project-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">🏭</span>
+        <span class="project-name">Home-Brewed Open-Source SOC</span>
+      </div>
+      <div class="project-desc">
+        Built a fully functional vSOC on Hetzner using Proxmox. Integrates Wazuh (SIEM), TheHive (IR platform),
+        Velociraptor (forensics), T-Pot (honeypot), and OPNsense (firewall/VPN).
+      </div>
+      <div class="project-tags">
+        <span class="tag">Wazuh</span>
+        <span class="tag">TheHive</span>
+        <span class="tag">Velociraptor</span>
+        <span class="tag">T-Pot</span>
+        <span class="tag">Proxmox</span>
+      </div>
+    </a>
+    <a class="project-card" href="https://github.com/tallcyberguy/vibecalc" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">🧮</span>
+        <span class="project-name">VibeCalc</span>
+      </div>
+      <div class="project-desc">
+        A simple interactive command-line calculator written in Python with an operator REPL loop.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">CLI</span>
+      </div>
+    </a>
+    <a class="project-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">📝</span>
+        <span class="project-name">Medium Articles</span>
+      </div>
+      <div class="project-desc">
+        Writing about incident response, threat hunting, SOC engineering, and practical cybersecurity topics
+        for the community.
+      </div>
+      <div class="project-tags">
+        <span class="tag">IR</span>
+        <span class="tag">Threat Hunting</span>
+        <span class="tag">SOC</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -595,63 +830,66 @@
 
 <!-- CONNECT -->
 <section id="connect">
-  <p class="section-label">// connect --me</p>
-  <h2 class="section-title">Find Me Online</h2>
+  <div class="connect-inner">
+    <p class="section-label">// connect --me</p>
+    <h2 class="section-title">Find Me Online</h2>
 
-  <div class="links-grid">
-    <!-- GitHub -->
-    <a class="link-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-      GitHub
-    </a>
-    <!-- Medium -->
-    <a class="link-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-      Medium Articles
-    </a>
-    <!-- TryHackMe -->
-    <a class="link-card" href="https://tryhackme.com/p/tallcyberguy" target="_blank" rel="noopener">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.292 4.404 5.318A4.938 4.938 0 000 10.2a4.919 4.919 0 004.93 4.93h5.775zm2.59 0v15.13h5.775A4.919 4.919 0 0024 10.2a4.938 4.938 0 00-4.404-4.882C19.098 2.292 16.46 0 13.295 0zM10.24 17.014H4.93A4.919 4.919 0 000 21.944v.057h10.24zm3.52 0v4.987H24v-.057a4.919 4.919 0 00-4.93-4.93z"/></svg>
-      TryHackMe
-    </a>
-  </div>
-
-  <!-- terminal easter egg -->
-  <div class="terminal-block">
-    <div class="t-bar">
-      <div class="t-dot red"></div>
-      <div class="t-dot yellow"></div>
-      <div class="t-dot green"></div>
+    <div class="links-grid">
+      <a class="link-card" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="link-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a class="link-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        Medium
+      </a>
+      <a class="link-card" href="https://tryhackme.com/p/tallcyberguy" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.292 4.404 5.318A4.938 4.938 0 000 10.2a4.919 4.919 0 004.93 4.93h5.775zm2.59 0v15.13h5.775A4.919 4.919 0 0024 10.2a4.938 4.938 0 00-4.404-4.882C19.098 2.292 16.46 0 13.295 0zM10.24 17.014H4.93A4.919 4.919 0 000 21.944v.057h10.24zm3.52 0v4.987H24v-.057a4.919 4.919 0 00-4.93-4.93z"/></svg>
+        TryHackMe
+      </a>
     </div>
-    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">whoami</span></div>
-    <div class="t-line">tallcyberguy</div>
-    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">cat mission.txt</span></div>
-    <div class="t-line t-comment"># Hunt threats. Respond fast. Share knowledge.</div>
-    <div class="t-line"><span class="t-cmd">$ </span><span class="t-out">echo $STATUS</span></div>
-    <div class="t-line" style="color:var(--green);">[ ONLINE &amp;&amp; HUNTING ]</div>
-    <div class="t-line"><span class="t-cmd">$ </span><span class="cursor" style="display:inline-block;width:8px;height:.9em;background:var(--green);vertical-align:middle;animation:blink .8s steps(1) infinite;"></span></div>
+
+    <div class="terminal-block">
+      <div class="t-bar">
+        <div class="t-dot red"></div>
+        <div class="t-dot yellow"></div>
+        <div class="t-dot green"></div>
+      </div>
+      <div><span class="t-cmd">$ </span><span class="t-out">cat profile.json</span></div>
+      <div style="color:var(--dim)">{</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"name"</span>: <span class="t-val">"Hüseyin Ekşi"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"role"</span>: <span class="t-val">"Senior IT Security Analyst"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"company"</span>: <span class="t-val">"NTT DATA Business Solutions"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"location"</span>: <span class="t-val">"Istanbul, Türkiye"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"focus"</span>: <span class="t-val">["IR", "Threat Hunting", "Cloud Sec"]</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"status"</span>: <span style="color:var(--green)">"open_to_opportunities"</span></div>
+      <div style="color:var(--dim)">}</div>
+      <div style="margin-top:.4rem"><span class="t-cmd">$ </span><span class="cursor" style="display:inline-block;width:8px;height:.9em;background:var(--green);vertical-align:middle;animation:blink .8s steps(1) infinite;"></span></div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>tallcyberguy</span> · Built with ☕ &amp; terminal aesthetics · 2025
+  <span>Hüseyin Ekşi</span> · tallcyberguy · Istanbul, Türkiye · 2025
 </footer>
 
 <script>
-  /* ── MATRIX RAIN ── */
+  /* MATRIX RAIN */
   const canvas = document.getElementById('matrix-canvas');
   const ctx = canvas.getContext('2d');
   let cols, drops;
   const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
-
   function initMatrix() {
-    canvas.width  = window.innerWidth;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    cols  = Math.floor(canvas.width / 16);
+    cols = Math.floor(canvas.width / 16);
     drops = Array(cols).fill(1);
   }
-
   function drawMatrix() {
     ctx.fillStyle = 'rgba(8,12,16,0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -664,22 +902,21 @@
       drops[i]++;
     });
   }
-
   initMatrix();
   setInterval(drawMatrix, 50);
   window.addEventListener('resize', initMatrix);
 
-  /* ── TYPEWRITER ── */
+  /* TYPEWRITER */
   const phrases = [
     'Incident Responder',
     'Threat Hunter',
+    'SOC Engineer',
+    'AWS Security Specialist',
     'Detection Engineer',
-    'Log Whisperer',
-    'Adversary Tracker',
+    'Open-Source SOC Builder',
   ];
   let pi = 0, ci = 0, deleting = false;
   const el = document.getElementById('typewriter');
-
   function type() {
     const phrase = phrases[pi];
     if (!deleting) {
@@ -689,7 +926,7 @@
       el.textContent = phrase.slice(0, --ci);
       if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
     }
-    setTimeout(type, deleting ? 45 : 90);
+    setTimeout(type, deleting ? 45 : 85);
   }
   type();
 </script>
