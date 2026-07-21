@@ -580,7 +580,8 @@
     Cybersecurity professional specialising in <strong style="color:var(--text)">Incident Response</strong>,
     <strong style="color:var(--text)">Threat Hunting</strong>, and
     <strong style="color:var(--text)">SOC Engineering</strong>.
-    I build detection systems, hunt adversaries, and share knowledge through articles and open-source projects.
+    I build detection systems, hunt adversaries, and develop <strong style="color:var(--text)">AI-assisted SOC tooling</strong> —
+    sharing what I learn through articles and open-source projects.
   </p>
 
   <div class="hero-cta">
@@ -789,6 +790,11 @@
         <div class="skill-name">Malware Analysis</div>
         <div class="skill-desc">Static and dynamic analysis of malware samples. YARA rule creation for detection. Phishing artefact dissection.</div>
       </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">AI-Assisted Security Ops</div>
+        <div class="skill-desc">Building agentic LLM pipelines for SOC automation — RAG-based enrichment, tool-calling, and human-in-the-loop triage workflows.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -801,6 +807,27 @@
   <h2 class="section-title">Notable Projects</h2>
 
   <div class="projects-grid">
+    <a class="project-card" href="https://github.com/tallcyberguy/eksir" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">⚗️</span>
+        <span class="project-name">EKSIR — AI SOC Workbench</span>
+      </div>
+      <div class="project-desc">
+        An analyst-grade AI SOC workbench that takes a raw alert to a verdict. Deterministic triage &
+        threat-intel enrichment run first, then a chain of LLM analyst personas (triage → analysis → hunt →
+        forensics → manager) proposes a MITRE-mapped conclusion — parked behind a human sign-off gate that's
+        the only thing allowed to commit a verdict or fire a response action. Self-hostable & multi-tenant.
+      </div>
+      <div class="project-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">LLM Agents</span>
+        <span class="tag">RAG</span>
+        <span class="tag">MITRE ATT&CK</span>
+        <span class="tag">Self-Hosted</span>
+      </div>
+    </a>
+
     <a class="project-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
       <div class="project-header">
         <span class="project-icon">🏭</span>
@@ -924,6 +951,7 @@
     'SOC Engineer',
     'AWS Security Specialist',
     'Detection Engineer',
+    'AI SOC Tooling Builder',
     'Open-Source SOC Builder',
   ];
   let pi = 0, ci = 0, deleting = false;
