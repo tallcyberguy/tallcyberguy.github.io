@@ -204,6 +204,14 @@
       background: rgba(255,255,255,.03);
     }
     .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-alert {
+      border: 1px solid rgba(255,77,79,.45);
+      color: #ff6b6b;
+      background: rgba(255,77,79,.07);
+    }
+    .btn-alert:hover { border-color: #ff4d4f; color: #ff4d4f; box-shadow: 0 0 20px rgba(255,77,79,.2); }
+    .connect-note { color: var(--dim); font-size: .9rem; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+    .connect-note strong { color: #ff6b6b; }
 
     .scroll-hint {
       position: absolute;
@@ -594,6 +602,9 @@
     <a class="btn btn-outline" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
       ⚙ GitHub
     </a>
+    <a class="btn btn-alert" href="#connect">
+      🚨 I've Been Hacked
+    </a>
   </div>
 
   <div class="scroll-hint">
@@ -629,7 +640,7 @@
       </p>
       <p>
         I'm a graduate of <strong>Marmara University</strong> and hold the AWS Security Specialty, AWS Cloud
-        Practitioner, BSI Incident Practitioner, and ISO 27001 Lead Auditor certifications, among others.
+        Practitioner, EC-Council ECSA, and ISO 27001 Lead Auditor certifications, among others.
         Outside work I share knowledge through <strong>Medium</strong>, TryHackMe, and YouTube.
       </p>
     </div>
@@ -670,7 +681,7 @@
         <div class="tl-company">İSTTELKOM A.Ş. · Istanbul, Türkiye · Hybrid</div>
         <div class="tl-desc">
           Security operations, incident response, and DFIR for İSTTELKOM's multi-tenant customer base.
-          Running SIEM operations across a fleet of Logsign deployments (log source onboarding, alert coverage
+          Running SIEM operations across a fleet of customer SIEM deployments (log source onboarding, alert coverage
           review, detection validation), hardening Linux audit and syslog forwarding pipelines, mapping
           external attack surface, and leading intrusion investigations end to end, from root cause to
           customer-facing incident reports. Building internal automation and AI-assisted SOC tooling to
@@ -734,9 +745,9 @@
       <div class="cert-issuer">TCM Security</div>
     </div>
     <div class="cert-card">
-      <div class="cert-icon">🚨</div>
-      <div class="cert-name">BSI Incident Practitioner (Vorfall-Praktiker)</div>
-      <div class="cert-issuer">CS VISOR</div>
+      <div class="cert-icon">🎯</div>
+      <div class="cert-name">EC-Council Certified Security Analyst (ECSA)</div>
+      <div class="cert-issuer">EC-Council</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">🐧</div>
@@ -747,16 +758,6 @@
       <div class="cert-icon">📋</div>
       <div class="cert-name">ISMS Auditor / Lead Auditor (ISO 27001)</div>
       <div class="cert-issuer">Star Cyber Security</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">🧩</div>
-      <div class="cert-name">Arch1001: x86-64 Assembly</div>
-      <div class="cert-issuer">OpenSecurityTraining2</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">🧪</div>
-      <div class="cert-name">Intro to DFIR: Divide and Conquer</div>
-      <div class="cert-issuer">Sleuth Kit Labs</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">🛡️</div>
@@ -921,6 +922,10 @@
   <div class="connect-inner">
     <p class="section-label">// connect --me</p>
     <h2 class="section-title">Find Me Online</h2>
+    <p class="connect-note">
+      <strong>Been hacked, or think you might be?</strong> Send me a message on LinkedIn with what happened,
+      when you noticed it, and which accounts or systems are affected. Never share passwords or codes.
+    </p>
 
     <div class="links-grid">
       <a class="link-card" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
