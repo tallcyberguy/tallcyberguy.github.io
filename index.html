@@ -3,612 +3,1027 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hüseyin Ekşi | Senior Cyber Security Expert</title>
-  <meta name="description" content="Senior Cyber Security Expert at İSTTELKOM A.Ş.: Incident Response, DFIR, Threat Hunting, SIEM and Detection Engineering, Cloud Security." />
+  <title>Huseyin Eksi | Senior Cyber Security Expert</title>
+  <meta name="description" content="Senior Cyber Security Expert at İSTTELKOM A.Ş.: Incident Response, DFIR, Threat Hunting, SIEM & Detection Engineering, Cloud Security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --page: #f4f2ee;
-      --card: #ffffff;
-      --line: #e0dfdc;
-      --text: rgba(0,0,0,.9);
-      --text-2: rgba(0,0,0,.6);
-      --text-3: rgba(0,0,0,.45);
-      --blue: #0a66c2;
-      --blue-hover: #004182;
-      --blue-wash: rgba(10,102,194,.08);
-      --red: #b3261e;
-      --red-wash: rgba(179,38,30,.07);
-      --chip: #eef3f8;
-      --banner-a: #a0b4b7;
-      --banner-b: #c4d0d3;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --page: #000000;
-        --card: #1b1f23;
-        --line: #38434f;
-        --text: rgba(255,255,255,.9);
-        --text-2: rgba(255,255,255,.6);
-        --text-3: rgba(255,255,255,.45);
-        --blue: #71b7fb;
-        --blue-hover: #a8d4ff;
-        --blue-wash: rgba(113,183,251,.12);
-        --red: #f28b82;
-        --red-wash: rgba(242,139,130,.1);
-        --chip: #24303b;
-        --banner-a: #3c4b55;
-        --banner-b: #2a353d;
-      }
+      --green:  #00ff88;
+      --cyan:   #00e5ff;
+      --purple: #8b5cf6;
+      --bg:     #080c10;
+      --surface:#0d1117;
+      --border: rgba(0,255,136,.15);
+      --text:   #c9d1d9;
+      --dim:    #6e7681;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--page);
+      background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, sans-serif;
-      font-size: 14px;
-      line-height: 1.43;
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    a { color: inherit; }
 
-    /* TOP BAR */
-    .topbar {
-      position: sticky; top: 0; z-index: 10;
-      background: var(--card);
-      border-bottom: 1px solid var(--line);
+    #matrix-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: .035;
+      pointer-events: none;
     }
-    .topbar-inner {
-      max-width: 1128px; margin: 0 auto;
-      height: 52px; padding: 0 16px;
-      display: flex; align-items: center; gap: 24px;
-    }
-    .mark {
-      width: 34px; height: 34px; border-radius: 4px;
-      background: var(--blue); color: var(--card);
-      display: grid; place-items: center;
-      font-weight: 700; font-size: 15px; letter-spacing: -.02em;
-      text-decoration: none; flex-shrink: 0;
-    }
-    .topnav { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
-    .topnav::-webkit-scrollbar { display: none; }
-    .topnav a {
-      text-decoration: none; color: var(--text-2);
-      font-size: 13px; padding: 6px 10px; border-radius: 4px; white-space: nowrap;
-    }
-    .topnav a:hover { color: var(--text); background: var(--blue-wash); }
 
-    /* LAYOUT */
-    .layout {
-      max-width: 1128px; margin: 24px auto; padding: 0 16px;
-      display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px;
-      align-items: start;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+      opacity: .03;
+      pointer-events: none;
+      z-index: 0;
     }
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: minmax(0, 1fr); margin-top: 12px; gap: 12px; }
-    }
-    .main, .aside { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-    .aside { position: sticky; top: 76px; }
-    @media (max-width: 900px) { .aside { position: static; } }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(8,12,16,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
-    @media (max-width: 600px) { .card { border-radius: 0; border-left: 0; border-right: 0; } .layout { padding: 0; } }
-    .card-body { padding: 20px 24px; }
-    @media (max-width: 600px) { .card-body { padding: 16px; } }
-    .card h2 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--green);
+      font-size: 1.05rem;
+      letter-spacing: .05em;
+    }
+    .nav-logo span { color: var(--cyan); }
+    nav ul { list-style:none; display:flex; gap:2rem; }
+    nav ul a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: .82rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--green); }
 
-    /* PROFILE */
-    .banner {
-      height: 160px;
-      background:
-        repeating-linear-gradient(135deg, transparent 0 22px, rgba(255,255,255,.07) 22px 23px),
-        linear-gradient(120deg, var(--banner-a), var(--banner-b));
-    }
-    @media (max-width: 600px) { .banner { height: 96px; } }
-    .profile-body { padding: 0 24px 24px; position: relative; }
-    @media (max-width: 600px) { .profile-body { padding: 0 16px 16px; } }
-    .avatar {
-      width: 152px; height: 152px; border-radius: 50%;
-      margin-top: -112px;
-      border: 4px solid var(--card);
-      background: #2f4858; color: #ffffff;
-      display: grid; place-items: center;
-      font-size: 52px; font-weight: 600; letter-spacing: -.02em;
-    }
-    @media (max-width: 600px) { .avatar { width: 96px; height: 96px; margin-top: -60px; font-size: 34px; } }
-    .profile-head { display: flex; justify-content: space-between; gap: 24px; margin-top: 12px; flex-wrap: wrap; }
-    .name { font-size: 24px; font-weight: 600; line-height: 1.25; }
-    .headline { font-size: 16px; margin-top: 2px; }
-    .meta { color: var(--text-2); margin-top: 8px; }
-    .meta a { color: var(--blue); font-weight: 600; text-decoration: none; }
-    .meta a:hover { text-decoration: underline; }
-    .affil { display: flex; flex-direction: column; gap: 8px; min-width: 200px; }
-    .affil-row { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
-    .logo {
-      width: 32px; height: 32px; border-radius: 4px; flex-shrink: 0;
-      display: grid; place-items: center;
-      font-size: 12px; font-weight: 700; color: #ffffff;
-    }
-    .logo.lg { width: 48px; height: 48px; font-size: 15px; }
+    /* SECTIONS */
+    section { position: relative; z-index: 1; }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(0,255,136,.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .35rem 1.1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .76rem;
+      color: var(--green);
+      margin-bottom: 2rem;
+      animation: fadeDown .6s ease both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-location {
+      font-size: .8rem;
+      color: var(--dim);
+      font-family: 'Share Tech Mono', monospace;
+      margin-bottom: .6rem;
+      animation: fadeDown .65s .05s ease both;
+    }
+    .hero-location span { color: var(--cyan); }
+
+    .hero-name {
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      animation: fadeDown .7s .1s ease both;
+    }
+    .hero-name .accent  { color: var(--green); }
+    .hero-name .accent2 { color: var(--cyan); }
+
+    .hero-company {
+      margin-top: .9rem;
+      font-size: .9rem;
+      color: var(--dim);
+      font-family: 'Share Tech Mono', monospace;
+      animation: fadeDown .75s .15s ease both;
+    }
+    .hero-company span { color: var(--text); font-weight: 600; }
+
+    .hero-terminal {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(.9rem, 2.3vw, 1.15rem);
+      color: var(--green);
+      margin-top: 1.4rem;
+      height: 1.8em;
+      animation: fadeDown .8s .2s ease both;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background: var(--green);
+      animation: blink .8s steps(1) infinite;
+      vertical-align: text-bottom;
+      height: 1.1em;
+      margin-left: 2px;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      color: var(--dim);
+      line-height: 1.75;
+      margin: 1.6rem auto 0;
+      font-size: .93rem;
+      animation: fadeDown .9s .3s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      animation: fadeDown 1s .4s ease both;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      height: 32px; padding: 0 16px; border-radius: 16px;
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      border: 1px solid var(--blue); color: var(--blue); background: transparent;
-      transition: background .15s, box-shadow .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.6rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
     }
-    .btn:hover { background: var(--blue-wash); box-shadow: inset 0 0 0 1px var(--blue); }
-    .btn.primary { background: var(--blue); color: var(--card); }
-    .btn.primary:hover { background: var(--blue-hover); border-color: var(--blue-hover); box-shadow: none; }
-    .btn.muted { border-color: var(--text-2); color: var(--text-2); }
-    .btn.muted:hover { background: var(--blue-wash); color: var(--text); box-shadow: inset 0 0 0 1px var(--text-2); }
-    .btn.alert { border-color: var(--red); color: var(--red); }
-    .btn.alert:hover { background: var(--red-wash); box-shadow: inset 0 0 0 1px var(--red); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--green);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,255,136,.3);
+    }
+    .btn-primary:hover { box-shadow: 0 0 32px rgba(0,255,136,.5); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-alert {
+      border: 1px solid rgba(255,77,79,.45);
+      color: #ff6b6b;
+      background: rgba(255,77,79,.07);
+    }
+    .btn-alert:hover { border-color: #ff4d4f; color: #ff4d4f; box-shadow: 0 0 20px rgba(255,77,79,.2); }
+    .connect-note { color: var(--dim); font-size: .9rem; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+    .connect-note strong { color: #ff6b6b; }
 
-    .status {
-      margin-top: 16px; padding: 12px 16px; border-radius: 8px;
-      background: var(--chip); font-size: 14px;
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: var(--dim); font-size: .72rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      animation: fadeDown 1.2s .8s ease both;
     }
-    .status strong { font-weight: 600; }
-    .status span { color: var(--text-2); }
+    .scroll-arrow {
+      width: 18px; height: 18px;
+      border-right: 2px solid var(--dim);
+      border-bottom: 2px solid var(--dim);
+      transform: rotate(45deg);
+      animation: bounce 1.5s infinite;
+    }
+
+    .grid-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
 
     /* ABOUT */
-    .about p { margin-bottom: 12px; }
-    .about p:last-child { margin-bottom: 0; }
-    .skill-line {
-      margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px;
-      font-size: 14px;
+    #about {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .skill-line strong { display: block; font-weight: 600; margin-bottom: 2px; }
-    .skill-line span { color: var(--text-2); }
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .74rem;
+      color: var(--green);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    @media(max-width:700px){ .about-grid { grid-template-columns:1fr; gap:2rem; } }
 
-    /* LIST ITEMS (experience, certs, education) */
-    .item { display: flex; gap: 12px; padding: 12px 0; }
-    .item + .item { border-top: 1px solid var(--line); }
-    .item:first-of-type { padding-top: 0; }
-    .item-title { font-weight: 600; font-size: 15px; }
-    .item-sub { font-size: 14px; }
-    .item-meta { color: var(--text-2); font-size: 14px; }
-    .item-desc { margin-top: 8px; }
-    .item-desc ul { padding-left: 18px; }
-    .item-desc li { margin-bottom: 4px; }
-    .tags { margin-top: 8px; color: var(--text-2); font-size: 14px; }
-    .tags strong { color: var(--text); font-weight: 600; }
+    .about-text p {
+      color: var(--dim); line-height: 1.8;
+      margin-bottom: 1rem; font-size: .93rem;
+    }
+    .about-text strong { color: var(--text); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .stat-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .stat-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.7rem;
+      color: var(--green); line-height: 1;
+    }
+    .stat-label {
+      color: var(--dim); font-size: .75rem;
+      margin-top: .3rem;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-inner { max-width: 1100px; margin: 0 auto; }
+    .timeline {
+      position: relative;
+      margin-top: 3rem;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green), transparent);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem; top: .35rem;
+      width: 10px; height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0,255,136,.6);
+    }
+    .tl-date {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .74rem;
+      color: var(--green);
+      letter-spacing: .1em;
+      margin-bottom: .3rem;
+    }
+    .tl-role {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tl-company {
+      font-size: .85rem;
+      color: var(--cyan);
+      margin-bottom: .5rem;
+    }
+    .tl-desc {
+      font-size: .85rem;
+      color: var(--dim);
+      line-height: 1.65;
+    }
+
+    /* CERTIFICATIONS */
+    #certs {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.4rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .cert-card:hover {
+      border-color: var(--purple);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(139,92,246,.08);
+    }
+    .cert-icon { font-size: 1.5rem; margin-bottom: .6rem; }
+    .cert-name { font-weight: 600; font-size: .9rem; color: var(--text); margin-bottom: .2rem; }
+    .cert-issuer { font-size: .78rem; color: var(--purple); font-family: 'Share Tech Mono', monospace; }
 
     /* SKILLS */
-    .skill { padding: 12px 0; }
-    .skill + .skill { border-top: 1px solid var(--line); }
-    .skill:first-of-type { padding-top: 0; }
-    .skill-name { font-weight: 600; font-size: 15px; }
-    .skill-desc { color: var(--text-2); margin-top: 2px; }
+    #skills {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .skills-inner { max-width: 1100px; margin: 0 auto; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .skill-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .skill-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,229,255,.07);
+    }
+    .skill-icon { font-size: 1.5rem; margin-bottom: .7rem; }
+    .skill-name { font-weight: 600; font-size: .92rem; margin-bottom: .35rem; }
+    .skill-desc { font-size: .8rem; color: var(--dim); line-height: 1.55; }
 
     /* PROJECTS */
-    .project { display: block; text-decoration: none; padding: 12px 0; }
-    .project + .project { border-top: 1px solid var(--line); }
-    .project:first-of-type { padding-top: 0; }
-    .project:hover .item-title { color: var(--blue); text-decoration: underline; }
-    .project .ext { color: var(--text-3); font-weight: 400; font-size: 13px; }
-
-    /* ASIDE */
-    .aside .card-body { padding: 16px; }
-    .aside h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .aside p { color: var(--text-2); }
-    .link-row {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 0; text-decoration: none;
+    #projects {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .link-row + .link-row { border-top: 1px solid var(--line); }
-    .link-row svg { flex-shrink: 0; color: var(--text-2); }
-    .link-row b { display: block; font-weight: 600; }
-    .link-row small { color: var(--text-2); font-size: 13px; }
-    .link-row:hover b { color: var(--blue); text-decoration: underline; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,255,136,.08);
+    }
+    .project-header { display: flex; align-items: center; gap: .7rem; }
+    .project-icon { font-size: 1.4rem; }
+    .project-name { font-weight: 700; font-size: .98rem; color: var(--text); }
+    .project-desc { font-size: .82rem; color: var(--dim); line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
+    .tag {
+      background: rgba(0,255,136,.07);
+      border: 1px solid rgba(0,255,136,.2);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .7rem;
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--green);
+    }
 
-    .hacked { border-top: 3px solid var(--red); }
-    .hacked h3 { color: var(--red); }
-    .hacked ol { padding-left: 18px; margin: 10px 0 12px; color: var(--text-2); }
-    .hacked li { margin-bottom: 4px; }
-    .hacked .btn { width: 100%; justify-content: center; }
+    /* CONNECT */
+    #connect {
+      padding: 6rem 1.5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .connect-inner { max-width: 800px; margin: 0 auto; }
+    .links-grid {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      margin-top: 3rem;
+    }
+    .link-card {
+      display: flex; align-items: center; gap: .85rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.6rem;
+      text-decoration: none; color: var(--text);
+      font-size: .88rem; font-weight: 500;
+      min-width: 190px;
+      transition: border-color .2s, transform .2s, box-shadow .2s, color .2s;
+    }
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,255,136,.08);
+      border-color: var(--green); color: var(--green);
+    }
+    .link-card svg { flex-shrink: 0; }
 
+    .terminal-block {
+      background: #0a0e14;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .81rem;
+      line-height: 1.75;
+      text-align: left;
+      max-width: 560px;
+      margin: 3rem auto 0;
+    }
+    .t-bar { display:flex; gap:.4rem; margin-bottom:.8rem; }
+    .t-dot { width:12px; height:12px; border-radius:50%; }
+    .t-dot.red    { background:#ff5f57; }
+    .t-dot.yellow { background:#febc2e; }
+    .t-dot.green  { background:#28c840; }
+    .t-cmd     { color: var(--green); }
+    .t-out     { color: var(--cyan); }
+    .t-val     { color: var(--text); }
+    .t-comment { color: #3a4149; }
+
+    /* FOOTER */
     footer {
-      max-width: 1128px; margin: 8px auto 32px; padding: 0 16px;
-      text-align: center; color: var(--text-2); font-size: 12px;
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--dim);
+      font-size: .76rem;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    footer span { color: var(--green); }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,255,136,.5); }
+      50%      { box-shadow: 0 0 0 5px rgba(0,255,136,0); }
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; } 50% { opacity:0; }
+    }
+    @keyframes bounce {
+      0%,100% { transform: rotate(45deg) translateY(0); }
+      50%      { transform: rotate(45deg) translateY(5px); }
+    }
+
+    .orb {
+      position: fixed; border-radius: 50%;
+      filter: blur(90px); pointer-events: none; z-index: 0;
+    }
+    .orb1 { width:500px; height:500px; background:rgba(0,255,136,.04); top:-200px; left:-200px; }
+    .orb2 { width:400px; height:400px; background:rgba(0,229,255,.04); bottom:-150px; right:-150px; }
+
+    @media(max-width:600px){
+      nav ul { gap:1rem; }
+      .hero-cta { flex-direction:column; align-items:center; }
     }
   </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="mark" href="#top" aria-label="Back to top">HE</a>
-    <nav class="topnav" aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<canvas id="matrix-canvas"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&gt; hüseyin<span>.eksi</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certs</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">Blue team, on duty</div>
+
+  <p class="hero-location">📍 <span>Istanbul, Türkiye</span></p>
+
+  <h1 class="hero-name">
+    Hüseyin <span class="accent">Ekşi</span>
+  </h1>
+
+  <p class="hero-company">
+    Senior Cyber Security Expert &nbsp;@&nbsp; <span>İSTTELKOM A.Ş.</span>
+  </p>
+
+  <div class="hero-terminal">
+    &gt; <span id="typewriter"></span><span class="cursor"></span>
   </div>
-</header>
 
-<div class="layout" id="top">
-  <main class="main">
+  <p class="hero-desc">
+    Cybersecurity professional specialising in <strong style="color:var(--text)">Incident Response</strong>,
+    <strong style="color:var(--text)">Threat Hunting</strong>, and
+    <strong style="color:var(--text)">SOC Engineering</strong>.
+    I build detection systems, hunt adversaries, and develop <strong style="color:var(--text)">AI-assisted SOC tooling</strong>,
+    sharing what I learn through articles and open-source projects.
+  </p>
 
-    <!-- PROFILE -->
-    <section class="card">
-      <div class="banner" aria-hidden="true"></div>
-      <div class="profile-body">
-        <div class="avatar" aria-hidden="true">HE</div>
-        <div class="profile-head">
-          <div>
-            <h1 class="name">Hüseyin Ekşi</h1>
-            <p class="headline">Senior Cyber Security Expert at İSTTELKOM A.Ş. | Incident Response, DFIR, Threat Hunting, Detection Engineering</p>
-            <p class="meta">Istanbul, Türkiye · <a href="#contact">Contact info</a></p>
-          </div>
-          <div class="affil">
-            <div class="affil-row"><span class="logo" style="background:#c8102e">İT</span>İSTTELKOM A.Ş.</div>
-            <div class="affil-row"><span class="logo" style="background:#1f3a68">MÜ</span>Marmara University</div>
-          </div>
-        </div>
-        <div class="actions">
-          <a class="btn primary" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          <a class="btn" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">Read my articles</a>
-          <a class="btn muted" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn alert" href="#hacked">I've been hacked</a>
-        </div>
-        <div class="status">
-          <strong>Currently</strong>
-          <span>· Running incident response, DFIR, and SIEM operations at İSTTELKOM, and building AI-assisted SOC tooling on the side.</span>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+      📝 Read my Articles
+    </a>
+    <a class="btn btn-outline" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
+      💼 LinkedIn Profile
+    </a>
+    <a class="btn btn-outline" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+      ⚙ GitHub
+    </a>
+    <a class="btn btn-alert" href="#connect">
+      🚨 I've Been Hacked
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    scroll
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">// whoami</p>
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a <strong>Senior Cyber Security Expert</strong> at <strong>İSTTELKOM A.Ş.</strong> with 5+ years of
+        hands-on experience defending enterprise and public-sector environments. My day-to-day spans incident
+        response and DFIR, SIEM and log pipeline engineering, detection coverage, and proactive threat hunting
+        across a multi-tenant customer base.
+      </p>
+      <p>
+        Before İSTTELKOM I worked as a Senior IT Security Analyst at <strong>NTT DATA Business Solutions</strong>
+        (cloud DFIR, Elastic SIEM detection engineering, SOC process and KPIs) and as an Incident Responder in
+        <strong>BGA Bilgi Güvenliği</strong>'s 24x7 Cyber Security Center.
+      </p>
+      <p>
+        I've built a fully self-hosted open-source SOC lab using
+        <strong>Wazuh, TheHive, Velociraptor, OPNsense, and T-Pot</strong> on Hetzner, because the
+        best way to understand attacks is to face them yourself.
+      </p>
+      <p>
+        I'm a graduate of <strong>Marmara University</strong> and hold the AWS Security Specialty, AWS Cloud
+        Practitioner, EC-Council ECSA, and ISO 27001 Lead Auditor certifications, among others.
+        Outside work I share knowledge through <strong>Medium</strong>, TryHackMe, and YouTube.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">10+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1.9K</div>
+        <div class="stat-label">LinkedIn Followers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">SOC</div>
+        <div class="stat-label">Home Lab Builder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <p class="section-label">// cat experience.log</p>
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">AUG 2026 – PRESENT</div>
+        <div class="tl-role">Senior Cyber Security Expert</div>
+        <div class="tl-company">İSTTELKOM A.Ş. · Istanbul, Türkiye · Hybrid</div>
+        <div class="tl-desc">
+          Security operations, incident response, and DFIR for İSTTELKOM's multi-tenant customer base.
+          Running SIEM operations across a fleet of customer SIEM deployments (log source onboarding, alert coverage
+          review, detection validation), hardening Linux audit and syslog forwarding pipelines, mapping
+          external attack surface, and leading intrusion investigations end to end, from root cause to
+          customer-facing incident reports. Building internal automation and AI-assisted SOC tooling to
+          speed up triage and enrichment.
         </div>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="card" id="about">
-      <div class="card-body about">
-        <h2>About</h2>
-        <p>
-          I'm a Senior Cyber Security Expert at İSTTELKOM A.Ş. with 5+ years of hands-on experience defending
-          enterprise and public-sector environments. My day-to-day spans incident response and DFIR, SIEM and log
-          pipeline engineering, detection coverage, and proactive threat hunting across a multi-tenant customer base.
-        </p>
-        <p>
-          Before İSTTELKOM I worked as a Senior IT Security Analyst at NTT DATA Business Solutions (cloud DFIR,
-          Elastic SIEM detection engineering, SOC process and KPIs) and as an Incident Responder in BGA Bilgi
-          Güvenliği's 24x7 Cyber Security Center.
-        </p>
-        <p>
-          I've built a fully self-hosted open-source SOC lab using Wazuh, TheHive, Velociraptor, OPNsense, and T-Pot
-          on Hetzner, because the best way to understand attacks is to face them yourself. Outside work I share what I
-          learn through Medium, TryHackMe, and open-source projects.
-        </p>
-        <div class="skill-line">
-          <strong>Top skills</strong>
-          <span>Incident Response · Digital Forensics · Threat Hunting · SIEM · Detection Engineering · Cloud Security (AWS)</span>
+      <div class="tl-item">
+        <div class="tl-date">FEB 2025 – AUG 2026</div>
+        <div class="tl-role">Senior IT Security Analyst</div>
+        <div class="tl-company">NTT DATA Business Solutions · Istanbul, Türkiye · Hybrid</div>
+        <div class="tl-desc">
+          Directed high-severity incident investigations and improved triage and escalation procedures.
+          Engineered cloud detection use cases in Elastic SIEM to cut false positives, built DFIR workflows on
+          AWS, remediated multi-cloud misconfigurations, and ran deep-dive investigations with Trend Micro
+          Vision One. Implemented SOC workflows including a structured vulnerability management process, and
+          defined SLA/KPI metrics for internal SOC performance.
         </div>
       </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="card" id="experience">
-      <div class="card-body">
-        <h2>Experience</h2>
-
-        <div class="item">
-          <span class="logo lg" style="background:#c8102e">İT</span>
-          <div>
-            <div class="item-title">Senior Cyber Security Expert</div>
-            <div class="item-sub">İSTTELKOM A.Ş. · Full-time</div>
-            <div class="item-meta"><span data-since="2026-08">Aug 2026 – Present</span></div>
-            <div class="item-meta">Istanbul, Türkiye · Hybrid</div>
-            <div class="item-desc">
-              <ul>
-                <li>Security operations, incident response, and DFIR for İSTTELKOM's multi-tenant customer base.</li>
-                <li>SIEM operations across a fleet of customer deployments: log source onboarding, alert coverage review, and detection validation.</li>
-                <li>Hardening Linux audit and syslog forwarding pipelines; mapping external attack surface.</li>
-                <li>Leading intrusion investigations end to end, from root cause to customer-facing incident reports.</li>
-                <li>Building internal automation and AI-assisted SOC tooling to speed up triage and enrichment.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <span class="logo lg" style="background:#1a73a8">ND</span>
-          <div>
-            <div class="item-title">Senior IT Security Analyst</div>
-            <div class="item-sub">NTT DATA Business Solutions · Full-time</div>
-            <div class="item-meta">Feb 2025 – Aug 2026 · 1 yr 7 mos</div>
-            <div class="item-meta">Istanbul, Türkiye · Hybrid</div>
-            <div class="item-desc">
-              <ul>
-                <li>Directed high-severity incident investigations, improving triage and escalation procedures.</li>
-                <li>Engineered cloud detection use cases in Elastic SIEM, reducing false positives.</li>
-                <li>Built DFIR workflows on AWS and remediated misconfigurations across multi-cloud environments.</li>
-                <li>Ran deep-dive cloud investigations with Trend Micro Vision One.</li>
-                <li>Implemented SOC workflows, including a structured vulnerability management process, and defined SLA/KPI metrics for internal SOC performance.</li>
-              </ul>
-            </div>
-            <div class="tags"><strong>Skills:</strong> Information Security · Project Management · Elastic SIEM · AWS</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <span class="logo lg" style="background:#d4441c">BGA</span>
-          <div>
-            <div class="item-title">Incident Responder</div>
-            <div class="item-sub">BGA Bilgi Güvenliği · Full-time</div>
-            <div class="item-meta">Feb 2021 – Oct 2023 · 2 yrs 9 mos</div>
-            <div class="item-meta">Istanbul, Türkiye</div>
-            <div class="item-desc">
-              <ul>
-                <li>Detection and response in a 24x7 Cyber Security Center for clients from small businesses to large government agencies.</li>
-                <li>Alert triage and escalation across IDS, SIEM, and custom network monitoring; phishing, brand abuse, and impersonation cases.</li>
-                <li>Carbon Black deployment aligned with MITRE ATT&amp;CK; threat hunting sessions and tabletop exercises in customer environments.</li>
-                <li>Static and dynamic malware analysis; host and network forensics (PCAP, email, Prefetch, ShimCache, AmCache, Registry) with THOR and Velociraptor.</li>
-              </ul>
-            </div>
-            <div class="tags"><strong>Skills:</strong> DLP · Malware Analysis · Network Forensics · OSINT</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <span class="logo lg" style="background:#2e7d32">İE</span>
-          <div>
-            <div class="item-title">Intern</div>
-            <div class="item-sub">İstanbul Enerji A.Ş.</div>
-            <div class="item-meta">Jul 2019 – Aug 2019 · 2 mos</div>
-            <div class="item-meta">Istanbul, Türkiye</div>
-          </div>
+      <div class="tl-item">
+        <div class="tl-date">FEB 2021 – OCT 2023</div>
+        <div class="tl-role">Incident Responder</div>
+        <div class="tl-company">BGA Bilgi Güvenliği · Istanbul, Türkiye</div>
+        <div class="tl-desc">
+          Detection and response in a 24x7 Cyber Security Center for clients ranging from small businesses to
+          large government agencies. Alert triage and escalation across IDS/SIEM, phishing, brand abuse and
+          impersonation cases, Carbon Black deployment aligned with MITRE ATT&amp;CK, threat hunting sessions,
+          tabletop exercises, static and dynamic malware analysis, and host/network forensics (PCAP, email,
+          Prefetch, ShimCache, AmCache, Registry) with THOR and Velociraptor.
         </div>
       </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="card" id="education">
-      <div class="card-body">
-        <h2>Education</h2>
-        <div class="item">
-          <span class="logo lg" style="background:#1f3a68">MÜ</span>
-          <div>
-            <div class="item-title">Marmara University</div>
-            <div class="item-sub">Bachelor's degree</div>
-          </div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-date">JUL 2019 – AUG 2019</div>
+        <div class="tl-role">Intern</div>
+        <div class="tl-company">İstanbul Enerji A.Ş. · Istanbul, Türkiye</div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- CERTIFICATIONS -->
-    <section class="card" id="certs">
-      <div class="card-body">
-        <h2>Licenses &amp; certifications</h2>
+<div class="grid-line"></div>
 
-        <div class="item">
-          <span class="logo lg" style="background:#232f3e">AWS</span>
-          <div>
-            <div class="item-title">AWS Certified Security – Specialty</div>
-            <div class="item-sub">Amazon Web Services (AWS)</div>
-            <div class="item-meta">Issued Nov 2025 · Expires Nov 2028</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#232f3e">AWS</span>
-          <div>
-            <div class="item-title">AWS Certified Cloud Practitioner</div>
-            <div class="item-sub">Amazon Web Services (AWS)</div>
-            <div class="item-meta">Issued Apr 2025 · Expires Apr 2028</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#5b2c83">TCM</span>
-          <div>
-            <div class="item-title">Practical SOC Analyst Associate (PSAA)</div>
-            <div class="item-sub">TCM Security</div>
-            <div class="item-meta">Issued Jan 2025</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#9e1b32">EC</span>
-          <div>
-            <div class="item-title">EC-Council Certified Security Analyst (ECSA)</div>
-            <div class="item-sub">EC-Council</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#37474f">CSI</span>
-          <div>
-            <div class="item-title">CSI Linux Certified Investigator (CSIL-CI)</div>
-            <div class="item-sub">CSI Linux</div>
-            <div class="item-meta">Issued Feb 2024 · Expires Mar 2029</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#00695c">ISO</span>
-          <div>
-            <div class="item-title">ISMS Auditor / Lead Auditor (ISO 27001)</div>
-            <div class="item-sub">Star Cyber Security</div>
-            <div class="item-meta">Issued Dec 2023</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#c8202f">CT</span>
-          <div>
-            <div class="item-title">CompTIA CySA+</div>
-            <div class="item-sub">CompTIA</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#c8202f">CT</span>
-          <div>
-            <div class="item-title">CompTIA Security+</div>
-            <div class="item-sub">CompTIA</div>
-          </div>
-        </div>
-        <div class="item">
-          <span class="logo lg" style="background:#c8202f">CT</span>
-          <div>
-            <div class="item-title">CompTIA Network+ ce</div>
-            <div class="item-sub">CompTIA</div>
-            <div class="item-meta">Issued Dec 2023 · Expires Dec 2026</div>
-          </div>
-        </div>
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <p class="section-label">// ls ./certifications/</p>
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div class="cert-name">AWS Certified Security – Specialty</div>
+      <div class="cert-issuer">Amazon Web Services</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌩️</div>
+      <div class="cert-name">AWS Certified Cloud Practitioner</div>
+      <div class="cert-issuer">Amazon Web Services</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔎</div>
+      <div class="cert-name">Practical SOC Analyst Associate (PSAA)</div>
+      <div class="cert-issuer">TCM Security</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎯</div>
+      <div class="cert-name">EC-Council Certified Security Analyst (ECSA)</div>
+      <div class="cert-issuer">EC-Council</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐧</div>
+      <div class="cert-name">CSI Linux Certified Investigator (CSIL-CI)</div>
+      <div class="cert-issuer">CSI Linux</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📋</div>
+      <div class="cert-name">ISMS Auditor / Lead Auditor (ISO 27001)</div>
+      <div class="cert-issuer">Star Cyber Security</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🛡️</div>
+      <div class="cert-name">CompTIA CySA+</div>
+      <div class="cert-issuer">CompTIA</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔐</div>
+      <div class="cert-name">CompTIA Security+</div>
+      <div class="cert-issuer">CompTIA</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-name">CompTIA Network+</div>
+      <div class="cert-issuer">CompTIA</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div class="cert-name">Marmara University</div>
+      <div class="cert-issuer">Bachelor's Degree</div>
+    </div>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <p class="section-label">// skill_set --list</p>
+    <h2 class="section-title">What I Work With</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-name">Threat Hunting</div>
+        <div class="skill-desc">Proactive hunt operations using hypotheses, IOCs, and behavioural analytics across endpoint & network telemetry.</div>
       </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="card" id="skills">
-      <div class="card-body">
-        <h2>Skills</h2>
-        <div class="skill">
-          <div class="skill-name">Incident Response</div>
-          <div class="skill-desc">End-to-end IR and DFIR: triage, containment, eradication, recovery, and root-cause analysis with customer-facing reporting.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Threat Hunting</div>
-          <div class="skill-desc">Hypothesis-driven hunts using IOCs and behavioural analytics across endpoint and network telemetry.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">SIEM &amp; Detection Engineering</div>
-          <div class="skill-desc">Detections and investigation queries in Logsign, Elastic SIEM, Wazuh, Microsoft Sentinel (KQL), SentinelOne Deep Visibility, and Splunk.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Windows Forensics</div>
-          <div class="skill-desc">Event logs, registry, prefetch, memory, and artifact analysis. Hayabusa and Chainsaw for EVTX timelines, Velociraptor for remote acquisition.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Log Pipeline Engineering</div>
-          <div class="skill-desc">Linux auditd and rsyslog hardening, syslog forwarding to SIEM, log source onboarding and coverage validation across multi-tenant fleets.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Cloud Security (AWS)</div>
-          <div class="skill-desc">Cloud DFIR on AWS, multi-cloud misconfiguration remediation, IAM risk review, and Trend Micro Vision One investigations.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Malware Analysis</div>
-          <div class="skill-desc">Static and dynamic analysis of samples, YARA rule writing, and phishing artefact dissection.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">Network Forensics</div>
-          <div class="skill-desc">Traffic analysis with Snort, tcpdump, T-Pot honeypot, and OPNsense for real-world threat telemetry.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">MITRE ATT&amp;CK</div>
-          <div class="skill-desc">Mapping adversary behaviour to ATT&amp;CK to improve detection coverage and purple-team exercises.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">AI-Assisted Security Operations</div>
-          <div class="skill-desc">Agentic LLM pipelines for SOC automation: RAG-based enrichment, tool calling, and human-in-the-loop triage.</div>
-        </div>
-        <div class="skill">
-          <div class="skill-name">PowerShell &amp; Python</div>
-          <div class="skill-desc">Automation, log parsing, detection tooling, and rapid incident response workflows.</div>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚨</div>
+        <div class="skill-name">Incident Response</div>
+        <div class="skill-desc">End-to-end IR and DFIR: triage, containment, eradication, recovery, and root-cause analysis with detailed customer-facing reporting.</div>
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="card" id="projects">
-      <div class="card-body">
-        <h2>Projects</h2>
-        <a class="project" href="https://github.com/tallcyberguy/eksir" target="_blank" rel="noopener">
-          <div class="item-title">EKSIR: AI SOC Workbench <span class="ext">↗</span></div>
-          <div class="item-desc">
-            An analyst-grade AI SOC workbench that takes a raw alert to a verdict. Deterministic triage and
-            threat-intel enrichment run first, then a chain of LLM analyst personas (triage, analysis, hunt,
-            forensics, manager) proposes a MITRE-mapped conclusion, parked behind a human sign-off gate that is the
-            only thing allowed to commit a verdict or fire a response action. Self-hostable and multi-tenant.
-          </div>
-          <div class="tags"><strong>Skills:</strong> FastAPI · Next.js · LLM Agents · RAG · MITRE ATT&amp;CK</div>
-        </a>
-        <a class="project" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
-          <div class="item-title">Home-Brewed Open-Source SOC <span class="ext">↗</span></div>
-          <div class="item-desc">
-            A fully functional virtual SOC on Hetzner using Proxmox. Integrates Wazuh (SIEM), TheHive (IR platform),
-            Velociraptor (forensics), T-Pot (honeypot), and OPNsense (firewall/VPN).
-          </div>
-          <div class="tags"><strong>Skills:</strong> Wazuh · TheHive · Velociraptor · T-Pot · Proxmox</div>
-        </a>
-        <a class="project" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
-          <div class="item-title">Medium Articles <span class="ext">↗</span></div>
-          <div class="item-desc">
-            Writing about incident response, threat hunting, SOC engineering, and practical cybersecurity topics for
-            the community.
-          </div>
-        </a>
+      <div class="skill-card">
+        <div class="skill-icon">🪟</div>
+        <div class="skill-name">Windows Forensics</div>
+        <div class="skill-desc">Event logs, registry, prefetch, memory, and artifact analysis. Hayabusa and Chainsaw for EVTX timelines, Velociraptor for remote acquisition.</div>
       </div>
-    </section>
-
-  </main>
-
-  <!-- SIDEBAR -->
-  <aside class="aside">
-    <section class="card" id="contact">
-      <div class="card-body">
-        <h3>Find me online</h3>
-        <a class="link-row" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span><b>LinkedIn</b><small>linkedin.com/in/hacksi</small></span>
-        </a>
-        <a class="link-row" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.220-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-          <span><b>GitHub</b><small>github.com/tallcyberguy</small></span>
-        </a>
-        <a class="link-row" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.870 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-          <span><b>Medium</b><small>@huseyin.eksi</small></span>
-        </a>
-        <a class="link-row" href="https://tryhackme.com/p/tallcyberguy" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.705 0C7.54 0 4.902 2.292 4.404 5.318A4.938 4.938 0 000 10.2a4.919 4.919 0 004.93 4.93h5.775zm2.59 0v15.13h5.775A4.919 4.919 0 0024 10.2a4.938 4.938 0 00-4.404-4.882C19.098 2.292 16.46 0 13.295 0zM10.24 17.014H4.93A4.919 4.919 0 000 21.944v.057h10.24zm3.52 0v4.987H24v-.057a4.919 4.919 0 00-4.93-4.93z"/></svg>
-          <span><b>TryHackMe</b><small>tryhackme.com/p/tallcyberguy</small></span>
-        </a>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">SIEM & KQL</div>
+        <div class="skill-desc">Detection engineering and investigation queries in Logsign, Elastic SIEM, Wazuh, Microsoft Sentinel, SentinelOne Deep Visibility, and Splunk.</div>
       </div>
-    </section>
-
-    <section class="card hacked" id="hacked">
-      <div class="card-body">
-        <h3>Been hacked?</h3>
-        <p>Think an account or system of yours has been compromised? Message me on LinkedIn and include:</p>
-        <ol>
-          <li>What happened</li>
-          <li>When you noticed it</li>
-          <li>Which accounts or systems are affected</li>
-        </ol>
-        <p style="margin-bottom:12px">Never share passwords or verification codes.</p>
-        <a class="btn alert" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Cloud Security (AWS)</div>
+        <div class="skill-desc">AWS Security Specialty certified. Cloud DFIR on AWS, multi-cloud misconfiguration remediation, IAM risk review, and Trend Micro Vision One investigations.</div>
       </div>
-    </section>
-
-    <section class="card">
-      <div class="card-body">
-        <h3>At a glance</h3>
-        <p>5+ years in security operations · 10 certifications · 1.9K LinkedIn followers</p>
+      <div class="skill-card">
+        <div class="skill-icon">🛡️</div>
+        <div class="skill-name">MITRE ATT&CK</div>
+        <div class="skill-desc">Mapping adversary behaviours to ATT&CK framework to improve detection coverage and purple-team exercises.</div>
       </div>
-    </section>
-  </aside>
-</div>
+      <div class="skill-card">
+        <div class="skill-icon">🐚</div>
+        <div class="skill-name">PowerShell & Python</div>
+        <div class="skill-desc">Scripting for automation, log parsing, threat detection tooling, and rapid incident response workflows.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🕸️</div>
+        <div class="skill-name">Network Forensics</div>
+        <div class="skill-desc">Traffic analysis with Snort, Tcpdump, T-Pot honeypot, and OPNsense for real-world threat telemetry.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🦠</div>
+        <div class="skill-name">Malware Analysis</div>
+        <div class="skill-desc">Static and dynamic analysis of malware samples. YARA rule creation for detection. Phishing artefact dissection.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐧</div>
+        <div class="skill-name">Log Pipeline Engineering</div>
+        <div class="skill-desc">Linux auditd and rsyslog hardening, syslog forwarding to SIEM, log source onboarding and coverage validation across multi-tenant fleets.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">AI-Assisted Security Ops</div>
+        <div class="skill-desc">Building agentic LLM pipelines for SOC automation: RAG-based enrichment, tool-calling, and human-in-the-loop triage workflows.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer>Hüseyin Ekşi · tallcyberguy · Istanbul, Türkiye · 2026</footer>
+<div class="grid-line"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// git log --oneline --projects</p>
+  <h2 class="section-title">Notable Projects</h2>
+
+  <div class="projects-grid">
+    <a class="project-card" href="https://github.com/tallcyberguy/eksir" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">⚗️</span>
+        <span class="project-name">EKSIR: AI SOC Workbench</span>
+      </div>
+      <div class="project-desc">
+        An analyst-grade AI SOC workbench that takes a raw alert to a verdict. Deterministic triage &
+        threat-intel enrichment run first, then a chain of LLM analyst personas (triage → analysis → hunt →
+        forensics → manager) proposes a MITRE-mapped conclusion, parked behind a human sign-off gate that's
+        the only thing allowed to commit a verdict or fire a response action. Self-hostable & multi-tenant.
+      </div>
+      <div class="project-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">LLM Agents</span>
+        <span class="tag">RAG</span>
+        <span class="tag">MITRE ATT&CK</span>
+        <span class="tag">Self-Hosted</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">🏭</span>
+        <span class="project-name">Home-Brewed Open-Source SOC</span>
+      </div>
+      <div class="project-desc">
+        Built a fully functional vSOC on Hetzner using Proxmox. Integrates Wazuh (SIEM), TheHive (IR platform),
+        Velociraptor (forensics), T-Pot (honeypot), and OPNsense (firewall/VPN).
+      </div>
+      <div class="project-tags">
+        <span class="tag">Wazuh</span>
+        <span class="tag">TheHive</span>
+        <span class="tag">Velociraptor</span>
+        <span class="tag">T-Pot</span>
+        <span class="tag">Proxmox</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+      <div class="project-header">
+        <span class="project-icon">📝</span>
+        <span class="project-name">Medium Articles</span>
+      </div>
+      <div class="project-desc">
+        Writing about incident response, threat hunting, SOC engineering, and practical cybersecurity topics
+        for the community.
+      </div>
+      <div class="project-tags">
+        <span class="tag">IR</span>
+        <span class="tag">Threat Hunting</span>
+        <span class="tag">SOC</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="grid-line"></div>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="connect-inner">
+    <p class="section-label">// connect --me</p>
+    <h2 class="section-title">Find Me Online</h2>
+    <p class="connect-note">
+      <strong>Been hacked, or think you might be?</strong> Send me a message on LinkedIn with what happened,
+      when you noticed it, and which accounts or systems are affected. Never share passwords or codes.
+    </p>
+
+    <div class="links-grid">
+      <a class="link-card" href="https://www.linkedin.com/in/hacksi/" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="link-card" href="https://github.com/tallcyberguy" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a class="link-card" href="https://medium.com/@huseyin.eksi" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        Medium
+      </a>
+      <a class="link-card" href="https://tryhackme.com/p/tallcyberguy" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10.705 0C7.54 0 4.902 2.292 4.404 5.318A4.938 4.938 0 000 10.2a4.919 4.919 0 004.93 4.93h5.775zm2.59 0v15.13h5.775A4.919 4.919 0 0024 10.2a4.938 4.938 0 00-4.404-4.882C19.098 2.292 16.46 0 13.295 0zM10.24 17.014H4.93A4.919 4.919 0 000 21.944v.057h10.24zm3.52 0v4.987H24v-.057a4.919 4.919 0 00-4.93-4.93z"/></svg>
+        TryHackMe
+      </a>
+    </div>
+
+    <div class="terminal-block">
+      <div class="t-bar">
+        <div class="t-dot red"></div>
+        <div class="t-dot yellow"></div>
+        <div class="t-dot green"></div>
+      </div>
+      <div><span class="t-cmd">$ </span><span class="t-out">cat profile.json</span></div>
+      <div style="color:var(--dim)">{</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"name"</span>: <span class="t-val">"Hüseyin Ekşi"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"role"</span>: <span class="t-val">"Senior Cyber Security Expert"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"company"</span>: <span class="t-val">"İSTTELKOM A.Ş."</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"location"</span>: <span class="t-val">"Istanbul, Türkiye"</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"focus"</span>: <span class="t-val">["IR", "DFIR", "SIEM", "Threat Hunting", "Cloud Sec"]</span>,</div>
+      <div>&nbsp;&nbsp;<span class="t-out">"status"</span>: <span style="color:var(--green)">"on_duty"</span></div>
+      <div style="color:var(--dim)">}</div>
+      <div style="margin-top:.4rem"><span class="t-cmd">$ </span><span class="cursor" style="display:inline-block;width:8px;height:.9em;background:var(--green);vertical-align:middle;animation:blink .8s steps(1) infinite;"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Hüseyin Ekşi</span> · tallcyberguy · Istanbul, Türkiye · 2026
+</footer>
 
 <script>
-  /* Live duration for the current role, e.g. "Aug 2026 – Present · 4 mos" */
-  document.querySelectorAll('[data-since]').forEach(function (el) {
-    var p = el.getAttribute('data-since').split('-');
-    var now = new Date();
-    var months = (now.getFullYear() - +p[0]) * 12 + (now.getMonth() + 1 - +p[1]) + 1;
-    var y = Math.floor(months / 12), m = months % 12, parts = [];
-    if (y) parts.push(y + (y === 1 ? ' yr' : ' yrs'));
-    if (m) parts.push(m + (m === 1 ? ' mo' : ' mos'));
-    if (parts.length) el.textContent += ' · ' + parts.join(' ');
-  });
+  /* MATRIX RAIN */
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+  let cols, drops;
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+  function initMatrix() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    cols = Math.floor(canvas.width / 16);
+    drops = Array(cols).fill(1);
+  }
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(8,12,16,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff88';
+    ctx.font = '14px Share Tech Mono, monospace';
+    drops.forEach((y, i) => {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * 16, y * 16);
+      if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+  initMatrix();
+  setInterval(drawMatrix, 50);
+  window.addEventListener('resize', initMatrix);
+
+  /* TYPEWRITER */
+  const phrases = [
+    'Incident Responder',
+    'DFIR Investigator',
+    'Threat Hunter',
+    'SOC Engineer',
+    'AWS Security Specialist',
+    'Detection Engineer',
+    'AI SOC Tooling Builder',
+    'Open-Source SOC Builder',
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typewriter');
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 45 : 85);
+  }
+  type();
 </script>
 </body>
 </html>
